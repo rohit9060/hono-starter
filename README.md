@@ -1,8 +1,10 @@
+# Hono Starter
+
 ```
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 ```
-open http://localhost:3000
+open http://localhost:5000
 ```
