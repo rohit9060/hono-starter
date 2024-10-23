@@ -1,12 +1,8 @@
 import { config } from "dotenv";
-import { expand } from "dotenv-expand";
-import { z } from "zod";
-expand(config());
+config();
 
-const EnvSchema = z.object({
-  PORT: z.coerce.number().default(5000),
-  NODE_ENV: z.enum(["development", "production"]).default("development"),
-});
-
-const _ENV = EnvSchema.parse(process.env);
+const _ENV = {
+  NODE_ENV: process.env.NODE_ENV || "development",
+  PORT: process.env.PORT || 5000,
+};
 export const ENV = Object.freeze(_ENV);

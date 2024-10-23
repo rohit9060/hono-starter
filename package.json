@@ -1,27 +1,30 @@
 {
-  "name": "hono-starter",
+  "name": "todo-app-with-acl-abca",
   "version": "1.0.0",
+  "description": "",
+  "main": "dist/server.js",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "dev": "nodemon",
     "build": "tsc && tsc-alias",
     "start": "node dist/server.js"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "@hono/node-server": "^1.13.2",
     "@hono/swagger-ui": "^0.4.1",
     "@hono/zod-openapi": "^0.16.4",
     "@scalar/hono-api-reference": "^0.5.156",
+    "chalk": "^5.3.0",
     "dotenv": "^16.4.5",
-    "dotenv-expand": "^11.0.6",
     "hono": "^4.6.6",
-    "hono-pino": "^0.4.0",
-    "pino": "^9.5.0",
-    "pino-pretty": "^11.3.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/node": "^20.11.17",
+    "@types/node": "^22.7.8",
+    "nodemon": "^3.1.7",
     "tsc-alias": "^1.8.10",
     "tsx": "^4.7.1",
     "typescript": "^5.6.3"

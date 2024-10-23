@@ -12,16 +12,32 @@ export class HttpError extends Error {
   }
 }
 
-export const errorHandler = (error: unknown, context: Context) => {
-  const statusCode = error instanceof HttpError ? error.statusCode : 500;
-  const message =
-    error instanceof Error ? error.message : "Unknown error occurred";
+export const errorHandler = (error: unknown, c: Context) => {
+  let statusCode = 500;
+  let message = "Internal Server Error";
+
+  if (error instanceof HttpError) {
+    statusCode = error instanceof HttpError ? error.statusCode : 500;
+    message = error instanceof Error ? error.message : "Unknown error occurred";
+  }
+
   const isDevelopment = ENV.NODE_ENV === "development";
+
   const response = {
     message,
     statusCode,
     ...(isDevelopment && error instanceof Error && { stack: error.stack }),
   };
 
-  return context.json(response, { status: statusCode });
+  return c.json(response, { status: statusCode });
+};
+
+export const notFoundHandler = (c: Context) => {
+  return c.json(
+    {
+      statusCode: 404,
+      message: "Not Found",
+    },
+    404
+  );
 };
